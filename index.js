@@ -31,7 +31,7 @@ lti.onConnect(async (token, req, res) => {
   return res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-lti.app.use(gzipStatic(path.join(__dirname, "./public")));
+lti.app.use(gzipStatic(path.join(__dirname, "/public/")));
 
 // Setting up routes
 lti.app.use(routes);
