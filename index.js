@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const gzipStatic = require("connect-gzip-static");
 const routes = require("./src/routes");
 
 const lti = require("ltijs").Provider;
@@ -30,8 +29,6 @@ lti.setup(
 lti.onConnect(async (token, req, res) => {
   return res.sendFile(path.join(__dirname, "./public/index.html"));
 });
-
-lti.app.use(gzipStatic(path.join(__dirname, "/public/")));
 
 // Setting up routes
 lti.app.use(routes);
